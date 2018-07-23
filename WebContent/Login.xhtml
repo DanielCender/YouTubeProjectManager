@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>
+		<ui:insert name="Default">YouTube Project Manager</ui:insert>
+	</title>
+	<link rel="stylesheet" type="text/css" href="/resources/CSS Stylesheets/style.css"/>
+	<ui:insert name="css"/>
+</h:head> 
+<body> 
+	<ui:composition template="/layouts/commonLayout.xhtml">
+	<ui:define name="title">YouTube Project Manager</ui:define>
+	<ui:define name="content">
+	
+		<div align="center">
+		<h:form>
+			Username: <h:inputText value="#{user.userName}" /><br/><br/>
+			Password: <h:inputText value="#{user.password}" /><br/><br/>
+			<h:button value="Register" outcome="Register.xhtml"/>
+			<h:commandButton action="#{loginController.onSubmit()}" value="Submit" />
+		</h:form>
+		<h:messages />
+		</div>
+	
+	</ui:define>
+	</ui:composition>
+</body> 
+</html>

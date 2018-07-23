@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>
+		<ui:insert name="Default">YouTube Project Manager</ui:insert>
+	</title>
+	<!-- add css link once stylesheet is added -->
+	<link    />
+</h:head> 
+<body> 
+
+	<ui:composition template="/layouts/commonLayout.xhtml">
+	<ui:define name="title">YouTube Project Manager</ui:define>
+	<ui:define name="content">
+	
+		<div align="center">
+		<h:form>
+			<h2> Hello #{user.firstName}, is this information correct?</h2>
+			<p> First Name: #{user.firstName}</p>
+			<p> Last Name: #{user.lastName}</p>
+			<p> Email: #{user.email}</p>
+			<p> Phone: #{user.phone}</p>
+			<p> Username: #{user.userName}</p>
+			<p> Password: #{user.password}</p>
+			<h:button value="Confirm" outcome="Login.xhtml"/>
+		</h:form>
+		
+		</div>
+	
+	</ui:define>
+	</ui:composition>
+
+</body> 
+</html>

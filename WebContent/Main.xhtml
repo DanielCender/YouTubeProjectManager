@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title><ui:insert name="Main">Projects</ui:insert></title>
+</h:head> 
+<body> 
+	<ui:composition template="/layouts/commonLayout.xhtml">
+	<ui:define name="title">Projects</ui:define>
+	<ui:define name="content">
+		
+		<div align="center">
+		<p>Hello #{user.userName}. Here are your projects:</p>
+		
+		<h:dataTable value="#{exampleProjects.example}" var="o" styleClass="ordertable">
+			<h:column>
+				<f:facet name="header">Type</f:facet>
+				#{o.type}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Title</f:facet>
+				#{o.title}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Status</f:facet>
+				#{o.status}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Release Date</f:facet>
+				#{o.release}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Creators</f:facet>
+				#{o.creators}
+			</h:column>
+		</h:dataTable>
+		
+		</div>
+	
+	</ui:define>
+	</ui:composition>
+</body>  
+</html>
