@@ -15,7 +15,7 @@
 		<div align="center">
 		<p>Hello #{user.userName}. Here are your projects:</p>
 		
-		<h:dataTable value="#{exampleProjects.example}" var="o" styleClass="ordertable">
+		<h:dataTable value="#{loginController.service.projects}" var="o" styleClass="ordertable" headerClass="ordertablerow" rowClasses="ordertableodd, ordertableeven">
 			<h:column>
 				<f:facet name="header">Type</f:facet>
 				#{o.type}
@@ -37,7 +37,7 @@
 				#{o.creators}
 			</h:column>
 		</h:dataTable>
-		
+		<h:button value="New Project" outcome="NewProject.xhtml"/>
 		</div>
 	
 	</ui:define>

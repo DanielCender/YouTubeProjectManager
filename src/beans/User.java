@@ -17,6 +17,7 @@ public class User {
 		email="fake@email.com";
 		userName="User";
 		password="Pass";
+		phone="1111111111";
 	}
 
 	public String getFirstName() {

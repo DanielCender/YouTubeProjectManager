@@ -4,11 +4,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-import beans.User;
+import beans.Project;
 import business.ProjectBusinessInterface;
 
 @ManagedBean
-public class LoginController {
+public class ProjectController {
 	
 	@Inject
 	ProjectBusinessInterface services;
@@ -16,18 +16,12 @@ public class LoginController {
 	public String onSubmit() {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
-		User user = context.getApplication().evaluateExpressionGet(context, "#{user}", User.class);
+		Project project = context.getApplication().evaluateExpressionGet(context, "#{project}", Project.class);	
 		
+		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("project", project);
 		
-		
-		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
+		services.addProject(new Project(project.toString().split(", ")));
 		
 		return "Main.xhtml";
 	}
-	
-	public ProjectBusinessInterface getService() {
-		
-		return services;
-	}
-	
 }
