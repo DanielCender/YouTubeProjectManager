@@ -1,48 +1,42 @@
 package business;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Alternative;
+import javax.inject.Inject;
 
 import beans.Project;
+import database.DatabaseInterface;
 
 @Stateless
-@Local(ProjectBusinessInterface.class)
+@Local
 @Alternative
 public class ProjectBusinessService implements ProjectBusinessInterface {
+
 	
-	List<Project> projects = new ArrayList<Project>();
-	
-	public ProjectBusinessService() {
-		
-		projects.add(new Project("Podcast", "Heat Gaming", "Scheduled", "7/24/18", "TrickeyDickey, Senshi10, Barron22"));
-		projects.add(new Project("Let's Play", "Detriot episode 2", "Uploaded", "7/25/18", "TrickeyDickey, Senshi10, Barron22"));
-		projects.add(new Project("Let's Play", "GTA V episode 1", "Recorded", "7/29/18", "TrickeyDickey, Senshi10, Barron22"));
-		projects.add(new Project("Virtual Reviews", "Seeking Dawn", "Idea", "TBD", "TrickeyDickey"));
-		projects.add(new Project("Stream", "Fortnite Fridays", "Thumbnail Done", "7/27/18", "Trickey Dickey, Senshi10"));
-		
-	}
+	@Inject
+	DatabaseInterface db;
 	
 	@Override
-	public void addProject(Project project) {
-		projects.add(project);
-		
+	public int deleteOne(int d) {
+		return db.deleteOne(d);
 	}
 
 	@Override
-	public List<Project> getProjects() {
-		return projects;
+	public int insertOne(Project b) {
+		return db.insertOne(b);
 	}
 
 	@Override
-	public void setProjects(List<Project> projects) {
-		this.projects = projects;
-		
+	public ArrayList<Project> readAll() {
+		return db.readAll();
 	}
 
+	@Override
+	public int updateOne(int d, Project b) {
+		return db.updateOne(d, b);
+	}	
 	
 
 }

@@ -8,6 +8,10 @@ import beans.User;
 @ManagedBean 
 public class RegisterController {
 
+	public RegisterController() {
+		
+	}
+	
 	public String onSubmit() {
 		
 		FacesContext context = FacesContext.getCurrentInstance();

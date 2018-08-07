@@ -11,18 +11,21 @@
 </h:head> 
 <body>
 	<ui:composition template="/layouts/commonLayout.xhtml">
-	<ui:define name="title">New Project</ui:define>
+	<ui:define name="title">Enter Changes below</ui:define>
 	<ui:define name="content">
+	
+		
 	
 		<div align="center">
 		<h:form>
+			<h:inputHidden value="#{project.id}" />
 			<p>Type: <h:inputText value="#{project.type}" /></p>
 			<p>Title: <h:inputText value="#{project.title}" /></p>
 			<p>Current Status: <h:inputText value="#{project.status}" /></p>
 			<p>Release Date: <h:inputText value="#{project.release}" /></p>
 			<p>Creators Involved: <h:inputText value="#{project.creators}" /></p>
 			<h:button value="Cancel" outcome="Main.xhtml"/>
-			<h:commandButton action="#{projectController.onSubmit()}" value="Submit" />
+			<h:commandButton action="#{projectController.onSubmitEdit()}" value="Submit" />
 		</h:form>
 		<h:messages />
 		</div>

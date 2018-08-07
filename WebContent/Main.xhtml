@@ -15,26 +15,38 @@
 		<div align="center">
 		<p>Hello #{user.userName}. Here are your projects:</p>
 		
-		<h:dataTable value="#{loginController.service.projects}" var="o" styleClass="ordertable" headerClass="ordertablerow" rowClasses="ordertableodd, ordertableeven">
+		<h:dataTable value="#{projectController.fetchAll()}" var="o" headerClass="ordertablerow" rowClasses="ordertableodd, ordertableeven">
 			<h:column>
 				<f:facet name="header">Type</f:facet>
-				#{o.type}
+				<h:outputText value= "#{o.type}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">Title</f:facet>
-				#{o.title}
+				<h:outputText value="#{o.title}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">Status</f:facet>
-				#{o.status}
+				<h:outputText value="#{o.status}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">Release Date</f:facet>
-				#{o.release}
+				<h:outputText value="#{o.release}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">Creators</f:facet>
-				#{o.creators}
+				<h:outputText value="#{o.creators}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Delete</f:facet>
+				<h:form>
+				<h:commandButton action="#{projectController.onDelete(o)}" value="Delete" />
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Edit</f:facet>
+				<h:form>
+				<h:commandButton action="#{projectController.onEdit(o)}" value="Edit" />
+				</h:form>
 			</h:column>
 		</h:dataTable>
 		<h:button value="New Project" outcome="NewProject.xhtml"/>

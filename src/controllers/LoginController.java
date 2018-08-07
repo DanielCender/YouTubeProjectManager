@@ -13,6 +13,10 @@ public class LoginController {
 	@Inject
 	ProjectBusinessInterface services;
 	
+	public LoginController() {
+		
+	}
+	
 	public String onSubmit() {
 		
 		FacesContext context = FacesContext.getCurrentInstance();

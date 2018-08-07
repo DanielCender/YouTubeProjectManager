@@ -1,31 +1,36 @@
 package beans;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 //import java.util.ArrayList;
 
 @ManagedBean
+@ViewScoped
 public class Project {
+	int id;
 	String type = "Type of Content", title = "Title of Project", status = "Current Status of Project", release = "Projected release date", creators = "Creators Involved";
 	//ArrayList<User> creators;
 	//creators will eventually be a list of users in a latter version
+	
 	public Project() {
 	}
 	
-	public Project(String type, String title, String status, String release, String users) {
+	public Project(int id, String type, String title, String status, String release, String users) {
+		this.id = id;
 		this.type = type;
 		this.title = title;
 		this.status = status;
 		this.release = release;
 		this.creators = users;
 	}
+	
+	public int getId() {
+		return id;
+	}
 
-	public Project(String[] split) {
-		this.type = split[0];
-		this.title = split[1];
-		this.status = split[2];
-		this.release = split[3];
-		this.creators = split[4];
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getType() {
