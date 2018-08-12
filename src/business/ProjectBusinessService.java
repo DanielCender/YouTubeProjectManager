@@ -36,6 +36,16 @@ public class ProjectBusinessService implements ProjectBusinessInterface {
 	@Override
 	public int updateOne(int d, Project b) {
 		return db.updateOne(d, b);
+	}
+
+	@Override
+	public Project getThingById(int thingnumber) {
+		return db.getThingById(thingnumber);
+	}
+
+	@Override
+	public ArrayList<Project> searchByName(String searchname) {
+		return db.searchByName(searchname);
 	}	
 	
 

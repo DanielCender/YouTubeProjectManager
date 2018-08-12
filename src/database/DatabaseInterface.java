@@ -12,4 +12,6 @@ public interface DatabaseInterface {
 	public int insertOne(Project b);
 	public ArrayList<Project> readAll();
 	public int updateOne(int d, Project b);
+	public Project getThingById(int thingnumber);
+	public ArrayList<Project> searchByName(String searchname);
 }

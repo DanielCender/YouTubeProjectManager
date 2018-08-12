@@ -187,5 +187,87 @@ public class DatabaseService implements DatabaseInterface{
 		
 		return numberOfRowsAffected;
 	}
+
+	@Override
+	public Project getThingById(int thingnumber) {
+		Project b = null;
+		
+		Connection c = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			c = DriverManager.getConnection(dbURL, user, password);
+			System.out.println("Connection successful " + dbURL + " user = " + user);
+			
+			//create a SQL statement
+			stmt = c.prepareStatement("select * from youtube.projects WHERE id = ?");
+			stmt.setInt(1, thingnumber);
+			
+			rs = stmt.executeQuery();
+			
+			//process the rows in the result set
+			while(rs.next()) {
+				b = new Project(rs.getInt("id"), rs.getString("type"), rs.getString("title"), rs.getString("status"), rs.getString("releasedate"), rs.getString("users"));
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("Error communicating with the database");
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				c.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return b;
+	}
+
+	@Override
+	public ArrayList<Project> searchByName(String searchname) {
+		ArrayList<Project> everyone = new ArrayList<>();
+		Project b = null;
+		
+		Connection c = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			c = DriverManager.getConnection(dbURL, user, password);
+			System.out.println("Connection successful " + dbURL + " user = " + user);
+			
+			//create a SQL statement
+			stmt = c.prepareStatement("select * from youtube.projects WHERE title LIKE ?");
+			stmt.setString(1, "%" + searchname + "%");
+			
+			rs = stmt.executeQuery();
+			
+			//process the rows in the result set
+			while(rs.next()) {
+				b = new Project(rs.getInt("id"), rs.getString("type"), rs.getString("title"), rs.getString("status"), rs.getString("releasedate"), rs.getString("users"));
+				everyone.add(b);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("Error communicating with the database");
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				c.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return everyone;
+	}
 	
 }
