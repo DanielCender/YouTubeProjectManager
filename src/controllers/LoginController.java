@@ -1,6 +1,7 @@
 package controllers;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
@@ -15,6 +16,11 @@ public class LoginController {
 	
 	public LoginController() {
 		
+	}
+	
+	public String onLogOff() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "Main.xhtml?faces-redirect=true";
 	}
 	
 	public String onSubmit() {

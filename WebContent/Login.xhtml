@@ -4,25 +4,19 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"> 
 
-<h:head>
-	<title>
-		<ui:insert name="Default">YouTube Project Manager</ui:insert>
-	</title>
-	<link rel="stylesheet" type="text/css" href="/resources/CSS Stylesheets/style.css"/>
-	<ui:insert name="css"/>
-</h:head> 
 <body> 
 	<ui:composition template="/layouts/commonLayout.xhtml">
 	<ui:define name="title">YouTube Project Manager</ui:define>
 	<ui:define name="content">
 	
 		<div align="center">
-		<h:form>
-			Username: <h:inputText value="#{user.userName}" /><br/><br/>
-			Password: <h:inputText value="#{user.password}" /><br/><br/>
+		<form method="post" action="j_security_check">
+			Username: <h:inputText id="j_username" autocomplete="off" value="#{user.userName}" /><br/>
+			Password: <h:inputSecret id="j_password" autocomplete="off" value="#{user.password}" /><br/>
+			<h:commandButton type="submit" value="Submit"/>
 			<h:button value="Register" outcome="Register.xhtml"/>
-			<h:commandButton action="#{loginController.onSubmit()}" value="Submit" />
-		</h:form>
+			
+		</form>
 		<h:messages />
 		</div>
 	
